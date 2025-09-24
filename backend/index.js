@@ -1,21 +1,21 @@
-// 1. Importar las herramientas que necesitamos
 const express = require('express');
 const cors = require('cors');
+const userRoutes = require('./routes/userRoutes'); // <-- 1. Importar las rutas
 
-// 2. Crear nuestra aplicación de Express
 const app = express();
-const PORT = 3001; // El "puerto" donde nuestro servidor escuchará
+const PORT = 3001;
 
-// 3. Configuraciones iniciales
-app.use(cors()); // Permitir que nuestro frontend se conecte
+app.use(cors());
+app.use(express.json()); // <-- 2. Permitir que Express entienda JSON
 
-// 4. Definir una ruta de prueba
-// Cuando alguien visite la dirección principal, le enviaremos un mensaje
+// Ruta de bienvenida
 app.get('/', (req, res) => {
     res.send('¡Bienvenido a la API de mi tienda!');
 });
 
-// 5. Iniciar el servidor
+// Usar las rutas de usuario
+app.use('/api/users', userRoutes); // <-- 3. "Enchufar" las rutas de usuario
+
 app.listen(PORT, () => {
-    console.log(`Servidor corriendo en el puerto http://localhost:${PORT}`);
+    console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
