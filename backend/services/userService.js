@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 
 const prisma = new PrismaClient();
 
+
 async function createUser({ email, password }) {
     // 1. Hashear la contraseña
     const hashedPassword = await bcrypt.hash(password, 10);

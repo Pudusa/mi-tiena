@@ -16,6 +16,7 @@ app.get('/', (req, res) => {
 // Usar las rutas de usuario
 app.use('/api/users', userRoutes); // <-- 3. "Enchufar" las rutas de usuario
 
+
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
