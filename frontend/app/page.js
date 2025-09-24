@@ -9,7 +9,7 @@ export default function Home() {
     // 2. Usamos useEffect para que el código se ejecute cuando la página cargue
     useEffect(() => {
         // 3. Hacemos la petición a nuestro backend
-        fetch('http://localhost:3001')
+        fetch(process.env.NEXT_PUBLIC_API_URL)
             .then(response => response.text()) // Convertimos la respuesta a texto
             .then(data => setMessage(data)); // Actualizamos el mensaje con los datos recibidos
     }, []); // El array vacío asegura que esto solo se ejecute una vez
